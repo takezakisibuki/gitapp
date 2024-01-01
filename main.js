@@ -15,6 +15,8 @@ const MutationButton = document.getElementById('MutationEventButton');
 const MutationResult = document.getElementById('MutationResult');
 const QueryResult = document.getElementById('QueryResult');
 const SubscriptionResult = document.getElementById('SubscriptionResult');
+const PrintButton = document.getElementById("PrintDataEvent");
+const PrintResult=document.getElementById("DataResult");
 
 async function addTodo() {
     const todo = {
@@ -37,12 +39,27 @@ async function fetchTodos() {
         });
 
         response.data.listTodos.items.map((todo, i) => {
-            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
         });
     } catch (e) {
         console.log('Something went wrong', e);
     }
 }
+
+// async function printTodos() {
+//     try {
+//         const response = await client.graphql({
+//             query: listTodos
+//         });
+
+//         response.data.listTodos.items.map((todo, i) => {
+//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}-${i}</p>`;
+
+//         });
+//     } catch (e) {
+//         console.log('Something went wrong', e);
+//     }
+// }
 
 MutationButton.addEventListener('click', (evt) => {
     addTodo().then((evt) => {
