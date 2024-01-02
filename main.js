@@ -60,7 +60,7 @@ async function fetchCountTodos() {
         //           }
         //     });
             const input ={
-                name: 'Use AppSync'
+                name: { eq: 'Use AppSync' }
             }
             const response = await client.graphql({
                 query: listTodos,
