@@ -59,10 +59,13 @@ async function fetchCountTodos() {
         //             nextToken: null // ページネーションのためのトークンなど
         //           }
         //     });
+            const input ={
+                name: 'Use AppSync'
+            }
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name: 'Use AppSync'},
+                    filter: input,
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
                 }
