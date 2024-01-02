@@ -59,9 +59,12 @@ async function fetchCountTodos() {
                     nextToken: null // ページネーションのためのトークンなど
                   }
             });
-            const items = response.data.listTodos.items;
-            alert(items.length);
-            values[i]=[items.length];
+            // const items = response.data.listTodos.items;
+            // alert(items.length);
+            // values[i]=[items.length];
+            response.data.listTodos.items.map((todo, i) => {
+                QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+            });
         }
         return values;
         
