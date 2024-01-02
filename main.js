@@ -47,22 +47,27 @@ async function fetchTodos() {
 }
 // ▼グラフの中身
 
-// async function fetchCountTodos() {
-//     try {
-//         const response = await client.graphql({
-//             query: listTodos,
-//             variables: {
-//                 filter: {name:'Use AppSync'},
-//                 limit: null, // 取得するアイテムの数を制限する場合
-//                 nextToken: null // ページネーションのためのトークンなど
-//               }
-//         });
-
+async function fetchCountTodos() {
+    try {
+        var values=[];
+        for(var i=1;i<5;i++){
+            const response = await client.graphql({
+                query: listTodos,
+                variables: {
+                    filter: {name:'Use AppSync'},
+                    limit: null, // 取得するアイテムの数を制限する場合
+                    nextToken: null // ページネーションのためのトークンなど
+                  }
+            });
+            const items = response.data.listTodos.items;
+            values[i]=items.length;
+        }
+        return values;
         
-//     } catch (e) {
-//         console.log('Something went wrong', e);
-//     }
-// }
+    } catch (e) {
+        console.log('Something went wrong', e);
+    }
+}
 
 MutationButton.addEventListener('click', (evt) => {
     addTodo().then((evt) => {
@@ -125,7 +130,8 @@ function subscribeToNewTodos() {
     });
 }
 
-fetchCountTodos();
+const val=fetchCountTodos();
+console.log(val);
 subscribeToNewTodos();
 fetchTodos();
 
