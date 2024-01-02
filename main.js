@@ -62,7 +62,7 @@ async function fetchCountTodos() {
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name:'Use AppSync'},
+                    filter: {name: 'Use AppSync'},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
                 }
@@ -143,9 +143,10 @@ function subscribeToNewTodos() {
     });
 }
 
-const val=fetchCountTodos();
-alert(val);
+fetchCountTodos();
+// alert(val);
 subscribeToNewTodos();
+fetchCountTodos();
 // fetchTodos();
 
 // import './style.css'
