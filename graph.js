@@ -23,56 +23,104 @@ async function fetchCountTodos() {
                     nextToken: null // ページネーションのためのトークンなど
                   }
             });
-            value[i]=response.data.listTodos.items.length
+            value[i]=response.data.listTodos.items.length 
+            console.log(response.data.listTodos.items.length)
         }
         return value; 
     } catch (e) {
         console.log('Something went wrong', e);
     }
 }
+async function fetchAndDrawGraph() {
+    try {
+        const value = await fetchCountTodos();
+        console.log(value);
 
-const value= await fetchCountTodos();
-console.log(value);
-// document.getElementById('PrintDataEvent').addEventListener('click', () => {
+        var pieData = [
+            {
+                value: value[0],            // 値
+                color:"#F7464A",       // 色
+                highlight: "#FF5A5E",  // マウスが載った際の色
+                label: "りんご"        // ラベル
+            },
+            {
+                value: value[1],
+                color: "#41C44E",
+                highlight: "#6CD173",
+                label: "メロン"
+            },
+            {
+                value: value[2],
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "みかん"
+            },
+            {
+                value: value[3],
+                color: "#AA49B8",
+                highlight: "#C583CF",
+                label: "ぶどう"
+            },
+            {
+                value: value[4],
+                color: "#4D5360",
+                highlight: "#616774",
+                label: "その他"
+            }
 
-    // ▼グラフの中身
-    var pieData = [
-    {
-        value: value[0],            // 値
-        color:"#F7464A",       // 色
-        highlight: "#FF5A5E",  // マウスが載った際の色
-        label: "りんご"        // ラベル
-    },
-    {
-        value: value[1],
-        color: "#41C44E",
-        highlight: "#6CD173",
-        label: "メロン"
-    },
-    {
-        value: value[2],
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "みかん"
-    },
-    {
-        value: value[3],
-        color: "#AA49B8",
-        highlight: "#C583CF",
-        label: "ぶどう"
-    },
-    {
-        value: value[4],
-        color: "#4D5360",
-        highlight: "#616774",
-        label: "その他"
-    }
+        ];
 
-    ];
-
-    // ▼上記のグラフを描画するための記述
-    window.onload = function () {
         var ctx = document.getElementById("graph-area").getContext("2d");
         window.myPie = new Chart(ctx).Pie(pieData);
-    };
+    } catch (e) {
+        console.log('Something went wrong', e);
+    }
+}
+
+fetchAndDrawGraph();
+
+// const value= await fetchCountTodos();
+// console.log(value);
+// // document.getElementById('PrintDataEvent').addEventListener('click', () => {
+
+//     // ▼グラフの中身
+//     var pieData = [
+//     {
+//         value: value[0],            // 値
+//         color:"#F7464A",       // 色
+//         highlight: "#FF5A5E",  // マウスが載った際の色
+//         label: "りんご"        // ラベル
+//     },
+//     {
+//         value: value[1],
+//         color: "#41C44E",
+//         highlight: "#6CD173",
+//         label: "メロン"
+//     },
+//     {
+//         value: value[2],
+//         color: "#FDB45C",
+//         highlight: "#FFC870",
+//         label: "みかん"
+//     },
+//     {
+//         value: value[3],
+//         color: "#AA49B8",
+//         highlight: "#C583CF",
+//         label: "ぶどう"
+//     },
+//     {
+//         value: value[4],
+//         color: "#4D5360",
+//         highlight: "#616774",
+//         label: "その他"
+//     }
+
+//     ];
+
+//     // ▼上記のグラフを描画するための記述
+//     window.onload = function () {
+//         var ctx = document.getElementById("graph-area").getContext("2d");
+//         window.myPie = new Chart(ctx).Pie(pieData);
+//     };
 // });
