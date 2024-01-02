@@ -50,7 +50,7 @@ async function fetchTodos() {
 async function fetchCountTodos() {
     try {
         var values=[];
-        for(var i=1;i<5;i++){
+        for(var i=0;i<5;i++){
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
@@ -152,9 +152,8 @@ function subscribeToNewTodos() {
 }
 
 const val = fetchCountTodos();
-alert(val[0]);
-alert(val[1]);
-alert(val[2]);
+alert(val);
+console.log(val)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
