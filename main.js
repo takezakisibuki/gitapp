@@ -152,7 +152,7 @@ function subscribeToNewTodos() {
 }
 
 const val = fetchCountTodos();
-alert(val);
+alert(val.length);
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
