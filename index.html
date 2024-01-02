@@ -21,7 +21,7 @@
     <h1>Visualize</h1>
     <canvas id="graph-area" height="450" width="600">
       <!-- <script src="./graph.js"> -->
-      <script type="text/javascript" src="./graph.js">
+      <script type="text/javascript" >
         var pieData = [
           {
               value: 100,            // 値
@@ -55,6 +55,7 @@
           }
 
         ];
+        console.log(pieData[0][value]);
 
         // ▼上記のグラフを描画するための記述
         window.onload = function () {
