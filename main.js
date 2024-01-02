@@ -32,41 +32,50 @@ async function addTodo() {
     });
 }
 
-async function fetchTodos() {
-    try {
-        const response = await client.graphql({
-            query: listTodos
-        });
+// async function fetchTodos() {
+//     try {
+//         const response = await client.graphql({
+//             query: listTodos
+//         });
 
-        response.data.listTodos.items.map((todo, i) => {
-            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
-        });
-    } catch (e) {
-        console.log('Something went wrong', e);
-    }
-}
+//         response.data.listTodos.items.map((todo, i) => {
+//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
+//         });
+//     } catch (e) {
+//         console.log('Something went wrong', e);
+//     }
+// }
 // ▼グラフの中身
 
 async function fetchCountTodos() {
     try {
         var values=[];
-        for(var i=1;i<5;i++){
+        // for(var i=1;i<5;i++){
+        //     const response = await client.graphql({
+        //         query: listTodos,
+        //         variables: {
+        //             filter: {name:'Use AppSync'},
+        //             limit: null, // 取得するアイテムの数を制限する場合
+        //             nextToken: null // ページネーションのためのトークンなど
+        //           }
+        //     });
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
                     filter: {name:'Use AppSync'},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
-                  }
+                }
             });
+        
             // const items = response.data.listTodos.items;
             // alert(items.length);
             // values[i]=[items.length];
             response.data.listTodos.items.map((todo, i) => {
                 QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
             });
-        }
-        return values;
+        
+        // return values;
         
     } catch (e) {
         console.log('Something went wrong', e);
