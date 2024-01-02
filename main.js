@@ -146,7 +146,7 @@ function subscribeToNewTodos() {
 const val=fetchCountTodos();
 alert(val);
 subscribeToNewTodos();
-fetchTodos();
+// fetchTodos();
 
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
