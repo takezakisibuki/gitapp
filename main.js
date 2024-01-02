@@ -131,7 +131,7 @@ function subscribeToNewTodos() {
 }
 
 const val=fetchCountTodos();
-console.log(val);
+alert(val);
 subscribeToNewTodos();
 fetchTodos();
 
