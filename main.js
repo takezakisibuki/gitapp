@@ -45,16 +45,14 @@ async function fetchTodos() {
         console.log('Something went wrong', e);
     }
 }
-
-// async function printTodos() {
+// async function fetchTodos() {
 //     try {
 //         const response = await client.graphql({
 //             query: listTodos
 //         });
 
 //         response.data.listTodos.items.map((todo, i) => {
-//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}-${i}</p>`;
-
+//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
 //         });
 //     } catch (e) {
 //         console.log('Something went wrong', e);
