@@ -60,6 +60,7 @@ async function fetchCountTodos() {
                   }
             });
             const items = response.data.listTodos.items;
+            alert(items.length);
             values[i]=[items.length];
         }
         return values;
@@ -131,7 +132,7 @@ function subscribeToNewTodos() {
 }
 
 const val=fetchCountTodos();
-alert(val[0]);
+alert(val);
 subscribeToNewTodos();
 fetchTodos();
 
