@@ -31,7 +31,7 @@ async function fetchCountTodos() {
     }
 }
 
-const value=fetchCountTodos();
+const value= await fetchCountTodos();
 console.log(value);
 // document.getElementById('PrintDataEvent').addEventListener('click', () => {
 
@@ -71,8 +71,8 @@ console.log(value);
     ];
 
     // ▼上記のグラフを描画するための記述
-    window.onload = function(){
-    var ctx = document.getElementById("graph-area").getContext("2d");
-    window.myPie = new Chart(ctx).Pie(pieData);
+    window.onload = function () {
+        var ctx = document.getElementById("graph-area").getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData);
     };
 // });
