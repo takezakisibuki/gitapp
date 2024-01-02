@@ -32,19 +32,19 @@ async function addTodo() {
     });
 }
 
-// async function fetchTodos() {
-//     try {
-//         const response = await client.graphql({
-//             query: listTodos
-//         });
+async function fetchTodos() {
+    try {
+        const response = await client.graphql({
+            query: listTodos
+        });
 
-//         response.data.listTodos.items.map((todo, i) => {
-//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
-//         });
-//     } catch (e) {
-//         console.log('Something went wrong', e);
-//     }
-// }
+        response.data.listTodos.items.map((todo, i) => {
+            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
+        });
+    } catch (e) {
+        console.log('Something went wrong', e);
+    }
+}
 // ▼グラフの中身
 
 async function fetchCountTodos() {
@@ -61,7 +61,7 @@ async function fetchCountTodos() {
 
             });
             const items = response.data.listTodos.items;
-            alert(items.length);
+            // alert(items.length);
             values[i]=[items.length];
         }
             // const input ={
@@ -151,11 +151,11 @@ function subscribeToNewTodos() {
     });
 }
 
-fetchCountTodos();
-// alert(val);
+const val = fetchCountTodos();
+alert(val);
 subscribeToNewTodos();
-fetchCountTodos();
-// fetchTodos();
+// fetchCountTodos();
+fetchTodos();
 
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
