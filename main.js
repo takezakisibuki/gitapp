@@ -50,35 +50,40 @@ async function addTodo() {
 async function fetchCountTodos() {
     try {
         var values=[];
-        // for(var i=1;i<5;i++){
-        //     const response = await client.graphql({
-        //         query: listTodos,
-        //         variables: {
-        //             filter: {name:'Use AppSync'},
-        //             limit: null, // 取得するアイテムの数を制限する場合
-        //             nextToken: null // ページネーションのためのトークンなど
-        //           }
-        //     });
-            const input ={
-                name: { eq: 'Use AppSync' }
-            }
+        for(var i=1;i<5;i++){
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: input,
+                    filter: {name:{ eq: 'Use AppSync' }},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
-                }
+                  }
+
             });
+            const items = response.data.listTodos.items;
+            alert(items.length);
+            values[i]=[items.length];
+        }
+            // const input ={
+            //     name: { eq: 'Use AppSync' }
+            // }
+            // const response = await client.graphql({
+            //     query: listTodos,
+            //     variables: {
+            //         filter: input,
+            //         limit: null, // 取得するアイテムの数を制限する場合
+            //         nextToken: null // ページネーションのためのトークンなど
+            //     }
+            // });
         
             // const items = response.data.listTodos.items;
             // alert(items.length);
             // values[i]=[items.length];
-            response.data.listTodos.items.map((todo, i) => {
-                QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
-            });
+            // response.data.listTodos.items.map((todo, i) => {
+            //     QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+            // });
         
-        // return values;
+        return values;
         
     } catch (e) {
         console.log('Something went wrong', e);
