@@ -45,19 +45,64 @@ async function fetchTodos() {
         console.log('Something went wrong', e);
     }
 }
-// async function fetchTodos() {
-//     try {
-//         const response = await client.graphql({
-//             query: listTodos
-//         });
+// ▼グラフの中身
 
-//         response.data.listTodos.items.map((todo, i) => {
-//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
-//         });
-//     } catch (e) {
-//         console.log('Something went wrong', e);
-//     }
-// }
+async function fetchCountTodos() {
+    try {
+        const response = await client.graphql({
+            query: listTodos,
+            variables: {
+                filter: {name:'Use AppSync'},
+                limit: null, // 取得するアイテムの数を制限する場合
+                nextToken: null // ページネーションのためのトークンなど
+              }
+        });
+
+        const len=length(response.data.listTodos.items)
+        var pieData = [
+            {
+               value: 240,            // 値
+               color:"#F7464A",       // 色
+               highlight: "#FF5A5E",  // マウスが載った際の色
+               label: "りんご"        // ラベル
+            },
+            {
+               value: 50,
+               color: "#41C44E",
+               highlight: "#6CD173",
+               label: "メロン"
+            },
+            {
+               value: 100,
+               color: "#FDB45C",
+               highlight: "#FFC870",
+               label: "みかん"
+            },
+            {
+               value: 65,
+               color: "#AA49B8",
+               highlight: "#C583CF",
+               label: "ぶどう"
+            },
+            {
+               value: len,
+               color: "#4D5360",
+               highlight: "#616774",
+               label: "その他"
+            }
+        
+         ];
+         // ▼上記のグラフを描画するための記述
+         window.onload = function(){
+            var ctx = document.getElementById("graph-area").getContext("2d");
+            window.myPie = new Chart(ctx).Pie(pieData);
+         };
+
+        
+    } catch (e) {
+        console.log('Something went wrong', e);
+    }
+}
 
 MutationButton.addEventListener('click', (evt) => {
     addTodo().then((evt) => {
@@ -120,6 +165,7 @@ function subscribeToNewTodos() {
     });
 }
 
+fetchCountTodos();
 subscribeToNewTodos();
 fetchTodos();
 
