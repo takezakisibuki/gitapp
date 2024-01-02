@@ -82,7 +82,7 @@
 // const value= await fetchCountTodos();
 // console.log(value);
 // // document.getElementById('PrintDataEvent').addEventListener('click', () => {
-
+alert("hoge")
     // ▼グラフの中身
 var pieData = [
     {
