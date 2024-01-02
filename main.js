@@ -67,6 +67,57 @@ MutationButton.addEventListener('click', (evt) => {
     });
 });
 
+PrintButton.addEventListener('click', (evt) => {
+ 
+    PrintResult.innerHTML += `    <canvas id="graph-area" height="450" width="600">
+    <script type="text/javascript">
+
+      // ▼グラフの中身
+      var pieData = [
+         {
+            value: 240,            // 値
+            color:"#F7464A",       // 色
+            highlight: "#FF5A5E",  // マウスが載った際の色
+            label: "りんご"        // ラベル
+         },
+         {
+            value: 50,
+            color: "#41C44E",
+            highlight: "#6CD173",
+            label: "メロン"
+         },
+         {
+            value: 100,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "みかん"
+         },
+         {
+            value: 65,
+            color: "#AA49B8",
+            highlight: "#C583CF",
+            label: "ぶどう"
+         },
+         {
+            value: 75,
+            color: "#4D5360",
+            highlight: "#616774",
+            label: "その他"
+         }
+   
+      ];
+   
+      // ▼上記のグラフを描画するための記述
+      window.onload = function(){
+         var ctx = document.getElementById("graph-area").getContext("2d");
+         window.myPie = new Chart(ctx).Pie(pieData);
+      };
+   
+   </script>
+  </canvas>`;
+
+});
+
 function subscribeToNewTodos() {
     client.graphql({ query: onCreateTodo }).subscribe({
         next: (evt) => {
