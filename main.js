@@ -62,7 +62,7 @@ async function fetchCountTodos() {
             });
             const items = response.data.listTodos.items;
             // alert(items.length);
-            values[i]=[items.length];
+            values[i]=items.length;
         }
             // const input ={
             //     name: { eq: 'Use AppSync' }
@@ -150,6 +150,16 @@ function subscribeToNewTodos() {
         }
     });
 }
+
+const ls = [];
+const val = fetchCountTodos();
+valPromise.then(result => {
+    ls=val; // 配列の値が表示される
+}).catch(error => {
+    console.error('Error:', error);
+});
+
+
 var pieData = [
 {
     value: 100,            // 値
@@ -189,10 +199,10 @@ var ctx = document.getElementById("graph-area").getContext("2d");
 window.myPie = new Chart(ctx).Pie(pieData);
 }
 
-const val = fetchCountTodos();
-alert(toString.call(val));
-console.log(toString.call(val))
-console.log(val)
+
+alert(toString.call(ls));
+console.log(toString.call(ls))
+console.log(ls)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
