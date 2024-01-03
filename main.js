@@ -193,6 +193,7 @@ val.then(result => {
     var ctx = document.getElementById("graph-area").getContext("2d");
     window.myPie = new Chart(ctx).Pie(pieData);
     };      
+    DrawPieChart();
     
 }).catch(error => {
     console.error('Error:', error);
@@ -246,7 +247,6 @@ val.then(result => {
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
-DrawPieChart();
 
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
