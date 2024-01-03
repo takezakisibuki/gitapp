@@ -190,8 +190,9 @@ window.myPie = new Chart(ctx).Pie(pieData);
 }
 
 const val = fetchCountTodos();
-alert(val[0]);
-console.log(val[0])
+alert(toString.call(val));
+console.log(toString.call(val))
+console.log(val)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
