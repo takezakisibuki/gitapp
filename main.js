@@ -154,7 +154,7 @@ function subscribeToNewTodos() {
 var ls = [];
 const val = fetchCountTodos();
 val.then(result => {
-    ls=val; // 配列の値が表示される
+    ls=result; // 配列の値が表示される
 }).catch(error => {
     console.error('Error:', error);
 });
@@ -202,7 +202,8 @@ window.myPie = new Chart(ctx).Pie(pieData);
 
 alert(toString.call(ls));
 console.log(toString.call(ls))
-console.log(ls)
+console.log(`ls is ${ls}`)
+console.log(`val is ${val}`)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
