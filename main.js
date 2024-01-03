@@ -189,7 +189,7 @@ val.then(result => {
         
     ];
     console.log(pieData);
-    window.onload = function () {
+    function DrawPieChart() {
     var ctx = document.getElementById("graph-area").getContext("2d");
     window.myPie = new Chart(ctx).Pie(pieData);
     };      
@@ -246,6 +246,7 @@ val.then(result => {
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
+DrawPieChart();
 
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
