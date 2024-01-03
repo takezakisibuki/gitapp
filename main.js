@@ -160,25 +160,25 @@ val.then(result => {
             value: result[0],            // 値
             color:"#F7464A",       // 色
             highlight: "#FF5A5E",  // マウスが載った際の色
-            label: "りんご"        // ラベル
+            label: "ペットボトル"        // ラベル
         },
         {
             value: result[1],
             color: "#41C44E",
             highlight: "#6CD173",
-            label: "メロン"
+            label: "カン"
         },
         {
             value: result[2],
             color: "#FDB45C",
             highlight: "#FFC870",
-            label: "みかん"
+            label: "ビン"
         },
         {
             value: result[3],
             color: "#AA49B8",
             highlight: "#C583CF",
-            label: "ぶどう"
+            label: "可燃ごみ"
         },
         {
             value: result[4],
