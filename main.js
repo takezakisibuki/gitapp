@@ -156,6 +156,7 @@ const val = fetchCountTodos();
 val.then(result => {
     console.log(result)
     ls=result; // 配列の値が表示される
+    console.log(ls)
 }).catch(error => {
     console.error('Error:', error);
 });
