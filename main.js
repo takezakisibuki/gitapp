@@ -151,7 +151,7 @@ function subscribeToNewTodos() {
     });
 }
 
-const ls = [];
+var ls = [];
 const val = fetchCountTodos();
 val.then(result => {
     ls=val; // 配列の値が表示される
