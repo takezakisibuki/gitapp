@@ -151,9 +151,10 @@ function subscribeToNewTodos() {
     });
 }
 
-var ls = [];
+
 const val = fetchCountTodos();
 val.then(result => {
+    console.log(result)
     var pieData = [
         {
             value: result[0],            // 値
@@ -186,12 +187,12 @@ val.then(result => {
             label: "その他"
         }
         
-        ];
-        
-        window.onload = function () {
-        var ctx = document.getElementById("graph-area").getContext("2d");
-        window.myPie = new Chart(ctx).Pie(pieData);
-    };
+    ];
+    console.log(pieData);
+    window.onload = function () {
+    var ctx = document.getElementById("graph-area").getContext("2d");
+    window.myPie = new Chart(ctx).Pie(pieData);
+    };      
     
 }).catch(error => {
     console.error('Error:', error);
@@ -238,10 +239,10 @@ val.then(result => {
 // }
 
 
-alert(toString.call(ls));
-console.log(toString.call(ls))
-console.log(`ls is ${ls}`)
-console.log(val)
+// alert(toString.call(ls));
+// console.log(toString.call(ls))
+// console.log(`ls is ${ls}`)
+// console.log(val)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
